@@ -8,6 +8,7 @@ const Navbar = async () => {
   console.log("Session data", session);
 
   return (
+    // Navigation bar with login and log out
     <div className='px-5 py-3 bg-3 bg-white shadow-sm font-work-sans'>
         <nav className='flex justify-between items-center'>
             <Link href="/">
