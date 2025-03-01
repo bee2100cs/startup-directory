@@ -5,7 +5,6 @@ import React from 'react'
 
 const Navbar = async () => {
   const session = await auth();
-  console.log("Session data", session);
 
   return (
     // Navigation bar with login and log out
