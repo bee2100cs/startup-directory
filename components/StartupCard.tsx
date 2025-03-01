@@ -1,12 +1,24 @@
-import { formatDate } from "@/lib/utils"
-import { EyeIcon } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "./ui/button"
+import { formatDate } from "@/lib/utils";
+import { EyeIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { Author, Startup } from "@/sanity/types";
 
-const StartupCard = ({ post }: { post: StartUpTypeCard }) => {
+export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author };
+
+const StartupCard = ({ post }: { post: StartupTypeCard }) => {
     // Destructure post properties
-    const { _createdAt, views, author: {_id: authorId, name }, title, category, _id, image, description } = post
+    const { 
+        _createdAt, 
+        views, 
+        author, 
+        title, 
+        category, 
+        _id, 
+        image, 
+        description
+     } = post
 
   return (
     <li className="startup-card group">
@@ -27,9 +39,9 @@ const StartupCard = ({ post }: { post: StartUpTypeCard }) => {
         <div className="flex-between mt-5 gap-5">
             {/* Author Name and post title with links to author details and post details */}
             <div className="flex-1">
-                <Link href={`/user/${authorId}`} >
+                <Link href={`/user/${author?._id}`} >
                     <p className="text-16-medium line-clamp-1">
-                        {name}
+                        {author?.name}
                     </p>
                 </Link>
                 <Link href={`/startup/${_id}`} >
@@ -40,7 +52,7 @@ const StartupCard = ({ post }: { post: StartUpTypeCard }) => {
             </div>
 
             {/* User avatar */}
-            <Link href={`/startup/${_id}`}>
+            <Link href={`/user/${author?._id}`}>
                 <Image 
                     src="https://placehold.co/48X48"
                     alt="placeholder" 
@@ -61,7 +73,7 @@ const StartupCard = ({ post }: { post: StartUpTypeCard }) => {
 
         {/* Card footer with post category*/}
         <div className="flex-between gap-3 mt-5">
-            <Link href={`/?query=${category.toLowerCase()}`}>
+            <Link href={`/?query=${category?.toLowerCase()}`}>
                 <p className="text-16-medium">{category}</p>
             </Link>
             <Button className="startup-card_btn" asChild>
