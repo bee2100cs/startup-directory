@@ -1,7 +1,6 @@
 import { auth, signIn, signOut } from '@/auth'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 const Navbar = async () => {
   const session = await auth();
@@ -28,7 +27,7 @@ const Navbar = async () => {
                     LogOut
                   </button>
                 </form>
-                <Link href={`/user/${session?.id}`}>
+                <Link href={`/user/${session?.user?.id}`}>
                   <span>{session?.user?.name}</span>
                 </Link>
                 </>
