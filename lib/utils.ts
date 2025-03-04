@@ -14,5 +14,10 @@ export function formatDate (date: string) {
 }
 
 export function formatViews(views: number): string {
+  if (views === null) return "No Views";
   return views === 1 ? "1 View" : `${views} Views`;
+}
+
+export function parseServerActionResponse<T>(response: T) {
+  return JSON.parse(JSON.stringify(response))
 }

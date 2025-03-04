@@ -10,6 +10,7 @@ import { formSchema } from '@/lib/validation';
 import { z } from 'zod';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { createPitch } from '@/lib/actions';
 
 
 const StartupForm = () => {
@@ -31,20 +32,19 @@ const StartupForm = () => {
 
             await formSchema.parseAsync(formValues);
 
-            console.log(formValues);
-            // const result = await createIdea(prevState, pitch);
+            const result = await createPitch(prevState, formData, pitch);
 
-            // console.log(result);
+            console.log(result);
 
-            // if(result.status == 'SUCCESS') {
-            //     toast.success('SUCCESS', {
-            //         description: "Your startup pitch has been created successfully",
-            //     });
+            if(result.status == 'SUCCESS') {
+                toast.success('SUCCESS', {
+                    description: "Your startup pitch has been created successfully",
+                });
 
-            //     router.push(`/startup/${result.id}`)
-            // }
+                router.push(`/startup/${result._id}`)
+            }
             
-            // return result
+            return result
 
         } catch (error) {
             if(error instanceof z.ZodError) {
@@ -52,7 +52,7 @@ const StartupForm = () => {
 
                 setErrors(fieldErrors as unknown as Record<string, string>);
 
-                toast.error( 'Uh oh! Something went wrng', {
+                toast.error( 'Uh oh! Something went wrong', {
                     
                     description: "Please check your inputs and try again",
                     action: {
