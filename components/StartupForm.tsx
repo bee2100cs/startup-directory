@@ -17,7 +17,6 @@ const StartupForm = () => {
     const [errors, setErrors] = useState<Record<string, string>>({});
     //MDEditor state
     const [pitch, setPitch] = useState("");
-
     const router = useRouter();
 
     const handleFormSubmit = async (prevState: any, formData: FormData) => {
