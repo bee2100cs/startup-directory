@@ -13,14 +13,14 @@ from fans via crypto wallets.
 - TypeScript
 
 ## Features
-👉 Display Latest startups dynamically using Sanity's Content API
-👉 Authenticate users using Github and NextAuth
-👉 Pitch Submission
-👉 View Pitches
-👉 Search Pitches
-👉 Pitch Details Page
-👉 Editor's Featured Pitches
-👉 View Counter
+👉 Display Latest startups dynamically using Sanity's Content API  
+👉 Authenticate users using Github and NextAuth  
+👉 Pitch Submission  
+👉 View Pitches  
+👉 Search Pitches  
+👉 Pitch Details Page  
+👉 Editor's Featured Pitches  
+👉 View Counter  
 
 # How To Use This project locally
 
